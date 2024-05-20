@@ -1,0 +1,16 @@
+#wrapper {
+    position: relative;
+    overflow: hidden;
+}
+
+.container {
+    width: 100%;
+    max-width: 1720px;
+    padding: 0 40px;
+    margin: 0 auto;
+}
+
+.title {
+    margin-bottom: 24px;
+    font: $medium 80px/1 $Montserrat;
+}
