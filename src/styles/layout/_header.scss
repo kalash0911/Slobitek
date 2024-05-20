@@ -1,1 +1,175 @@
-#header {}
+#header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 40px 0;
+
+    .logo {
+        position: relative;
+        display: block;
+        max-width: max-content;
+
+        svg {
+            display: block;
+        }
+    }
+
+    .logo-text-wrap {
+        margin: 0;
+        font: $semi-bold 24px / normal $Montserrat;
+        text-transform: uppercase;
+        letter-spacing: 1.1px;
+        color: $white;
+    }
+
+    .logo-text {
+        opacity: 0;
+        animation: logoTextAnim 0.3s linear forwards 0.8s;
+    }
+
+    @keyframes logoTextAnim {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+
+    $dotAnim: 1s forwards cubic-bezier(0.42, 0, 0.58, 1);
+
+    .read-more-line {
+        position: absolute;
+        top: -40px;
+        right: -7px;
+        width: 4px;
+        height: 60px;
+    }
+
+    .line {
+        position: absolute;
+        left: 50%;
+        top: 0;
+        transform: translateX(-50%);
+        width: 1px;
+        height: 100%;
+
+        &:after {
+            content: '';
+            width: 100%;
+            height: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-image: -webkit-linear-gradient(
+                top,
+                rgba(255, 255, 255, 0.1) 0%,
+                rgba(255, 255, 255, 0.8) 100%
+            );
+            animation: lineLight $dotAnim;
+        }
+    }
+
+    .dot {
+        width: 4px;
+        height: 4px;
+        background-color: white;
+        border-radius: 50%;
+        position: absolute;
+        left: 50%;
+        top: 0;
+        transform: translateY(-10px);
+        animation: dotDown $dotAnim;
+
+        &:after {
+            content: '';
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.6);
+            animation: dotExplotion $dotAnim;
+        }
+    }
+
+    @keyframes dotDown {
+        0% {
+            transform: translate3d(-0%, 0, 0);
+        }
+
+        75% {
+            transform: translate3d(-50%, 60px, 0);
+        }
+
+        100% {
+            transform: translate3d(-50%, 60px, 0);
+        }
+    }
+
+    @keyframes lineLight {
+        0% {
+            height: 0;
+        }
+        75% {
+            height: 100%;
+            opacity: 1;
+        }
+        100% {
+            height: 100%;
+            opacity: 0;
+        }
+    }
+
+    @keyframes dotExplotion {
+        0% {
+            transform: scale(1);
+        }
+
+        74% {
+            transform: scale(1);
+        }
+
+        75% {
+            transform: scale(2);
+        }
+
+        80% {
+            transform: scale(4);
+            opacity: 0.7;
+        }
+
+        100% {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+
+    .circle {
+        position: absolute;
+        top: 0;
+        left: 35px;
+
+        path {
+            animation: logo-anim 0.7s linear 0.8s forwards;
+            opacity: 0;
+            stroke-dasharray: 35;
+        }
+    }
+
+    @keyframes logo-anim {
+        0% {
+            opacity: 0;
+            stroke-dashoffset: 35;
+        }
+        50% {
+            opacity: 1;
+            stroke-dashoffset: 35;
+        }
+        100% {
+            opacity: 1;
+            stroke-dashoffset: 0;
+        }
+    }
+}
