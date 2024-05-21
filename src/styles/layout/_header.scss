@@ -78,7 +78,6 @@
         position: absolute;
         left: 50%;
         top: 0;
-        transform: translateY(-10px);
         animation: dotDown $dotAnim;
 
         &:after {
@@ -96,15 +95,15 @@
 
     @keyframes dotDown {
         0% {
-            transform: translate3d(-0%, 0, 0);
+            transform: translate(-50%, -10px);
         }
 
         75% {
-            transform: translate3d(-50%, 60px, 0);
+            transform: translate(-50%, 60px);
         }
 
         100% {
-            transform: translate3d(-50%, 60px, 0);
+            transform: translate(-50%, 60px);
         }
     }
 
