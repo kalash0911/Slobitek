@@ -18,75 +18,24 @@
         margin-bottom: 40px;
         text-align: center;
 
-        path {
+        path,
+        circle {
             transition: all 1.5s ease-in;
+            stroke-dasharray: 500;
+            stroke-dashoffset: 500;
         }
 
-        &.web {
-
-            path {
-                stroke-dasharray: 500;
-                stroke-dashoffset: 500;
-            }
-
-            &.show {
-
-                path {
-                    stroke-dashoffset: 0;
-                }           
+        &.show {
+            path,
+            circle {
+                stroke-dashoffset: 0;
             }
         }
-
-        &.ai {
-            
-            path {
-                stroke-dasharray: 500;
-                stroke-dashoffset: 500;
-            }
-
-            &.show {
-
-                path {
-                    stroke-dashoffset: 0;
-                }           
-            }
-        }
-
-        &.ux {
-
-            path {
-                stroke-dasharray: 500;
-                stroke-dashoffset: 500;
-            }
-
-            &.show {
-
-                path {
-                    stroke-dashoffset: 0;
-                }           
-            }
-        }
-
-
-        &.qa {
-
-            path {
-                stroke-dasharray: 500;
-                stroke-dashoffset: 500;
-            }
-
-            &.show {
-
-                path {
-                    stroke-dashoffset: 0;
-                }           
-            }
-        }
-    }    
+    }
 
     .item-title {
         margin-bottom: 8px;
-        font: $medium 24px/normal $Montserrat;
+        font: $medium 24px / normal $Montserrat;
     }
 
     .item-text {
