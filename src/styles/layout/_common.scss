@@ -17,19 +17,12 @@
     .icon {
         margin-bottom: 40px;
         text-align: center;
-
-        path,
-        circle {
-            transition: all 1.5s ease-in;
-            stroke-dasharray: 500;
-            stroke-dashoffset: 500;
-        }
+        transition: all 1.5s ease-in;
+        stroke-dasharray: 500;
+        stroke-dashoffset: 500;
 
         &.show {
-            path,
-            circle {
-                stroke-dashoffset: 0;
-            }
+            stroke-dashoffset: 0;
         }
     }
 
