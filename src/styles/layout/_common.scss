@@ -358,4 +358,14 @@
             stroke-dasharray: 8180;
         }
     }
+
+    .vertical-line {
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: translate(-50%, -50%);
+        height: 1000vh;
+        width: 1px;
+        background-color: rgba($white, 0.2);
+    }
 }
