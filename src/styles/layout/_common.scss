@@ -313,4 +313,50 @@
             z-index: -6;
         }
     }
+
+    .sector {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        min-width: 320px;
+        min-height: 320px;
+        z-index: -1;
+
+        .sector-circle-svg {
+            position: absolute;
+            display: block;
+
+            svg {
+                width: 320px;
+                height: 320px;
+            }
+        }
+
+        .sector-circle-svg1 {
+            transform: rotate(30deg);
+        }
+
+        .sector-circle-svg2 {
+            transform: rotate(-90deg);
+        }
+
+        .sector-circle1,
+        .sector-circle2 {
+            fill: none;
+            stroke: $blueE6;
+            stroke-width: 600px;
+            transform: matrix(1, 0, 0, 1, 0, 0);
+        }
+
+        .sector-circle1 {
+            stroke-dashoffset: 6580;
+            stroke-dasharray: 6580;
+        }
+
+        .sector-circle2 {
+            stroke-dashoffset: 8180;
+            stroke-dasharray: 8180;
+        }
+    }
 }

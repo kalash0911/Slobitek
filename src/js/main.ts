@@ -157,6 +157,87 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+// Animation for sector-icon
+
+const circle1 = document.querySelector('.sector-circle1') as SVGCircleElement;
+const circle2 = document.querySelector('.sector-circle2') as SVGCircleElement;
+const sectorCircleSvg1 = document.querySelector('.sector-circle-svg1') as SVGGElement;
+const sectorCircleSvg2 = document.querySelector('.sector-circle-svg2') as SVGGElement;
+
+if (circle1 && circle2 && sectorCircleSvg1 && sectorCircleSvg2) {
+  const animationSpeed = '1000ms'; // Animation speed
+  const initialOffset = 6580;
+  const initialArray = 6580;
+  const targetOffset = 8180;
+  const targetArray = 8180;
+  const initialRotation = 30;
+  const targetRotation = 90;
+  const initialRotationSvg2 = -90;
+  const targetRotationSvg2 = 30;
+
+  let isAnimating = false;
+
+  const playAnimation = (reverse: boolean) => {
+    if (isAnimating) return;
+    isAnimating = true;
+
+    // Determine initial and target values based on reverse flag
+    const offset1 = reverse ? targetOffset : initialOffset;
+    const array1 = reverse ? targetArray : initialArray;
+    const offset2 = reverse ? initialOffset : targetOffset;
+    const array2 = reverse ? initialArray : targetArray;
+    const rotation1 = reverse ? targetRotation : initialRotation;
+    const rotation2 = reverse ? initialRotation : targetRotation;
+    const rotationSvg2_1 = reverse ? targetRotationSvg2 : initialRotationSvg2;
+    const rotationSvg2_2 = reverse ? initialRotationSvg2 : targetRotationSvg2;
+
+    // Set initial values
+    circle1.style.strokeDashoffset = offset1.toString();
+    circle1.style.strokeDasharray = array1.toString();
+    circle2.style.strokeDashoffset = offset2.toString();
+    circle2.style.strokeDasharray = array2.toString();
+    sectorCircleSvg1.style.transform = `rotate(${rotation1}deg)`;
+    sectorCircleSvg2.style.transform = `rotate(${rotationSvg2_1}deg)`;
+
+    // Add smooth transition
+    circle1.style.transition = `stroke-dashoffset ${animationSpeed}, stroke-dasharray ${animationSpeed}`;
+    circle2.style.transition = `stroke-dashoffset ${animationSpeed}, stroke-dasharray ${animationSpeed}`;
+    sectorCircleSvg1.style.transition = `transform ${animationSpeed}`;
+    sectorCircleSvg2.style.transition = `transform ${animationSpeed}`;
+
+    // Use setTimeout to apply the target values in the next frame
+    setTimeout(() => {
+      circle1.style.strokeDashoffset = offset2.toString();
+      circle1.style.strokeDasharray = array2.toString();
+      circle2.style.strokeDashoffset = offset1.toString();
+      circle2.style.strokeDasharray = array1.toString();
+      sectorCircleSvg1.style.transform = `rotate(${rotation2}deg)`;
+      sectorCircleSvg2.style.transform = `rotate(${rotationSvg2_2}deg)`;
+    }, 0);
+
+    // Use another setTimeout to revert to initial values without transition
+    setTimeout(() => {
+      circle1.style.transition = 'none';
+      circle1.style.strokeDashoffset = offset1.toString();
+      circle1.style.strokeDasharray = array1.toString();
+      circle2.style.transition = 'none';
+      circle2.style.strokeDashoffset = offset2.toString();
+      circle2.style.strokeDasharray = array2.toString();
+      sectorCircleSvg1.style.transition = 'none';
+      sectorCircleSvg1.style.transform = `rotate(${rotation1}deg)`;
+      sectorCircleSvg2.style.transition = 'none';
+      sectorCircleSvg2.style.transform = `rotate(${rotationSvg2_1}deg)`;
+      isAnimating = false;
+    }, parseInt(animationSpeed)); // After animationSpeed milliseconds
+  };
+
+  verticalSliderNav.on('slideNextTransitionStart', () => playAnimation(false));
+  verticalSliderNav.on('slidePrevTransitionStart', () => playAnimation(true));
+}
+
+
+
+
 
 
 
