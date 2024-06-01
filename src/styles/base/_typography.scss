@@ -53,6 +53,10 @@ p {
     font: $medium 16px / normal $Montserrat;
     color: rgba($white, 0.8);
     font-weight: $regular;
+
+    @include media('<tablet') {
+        font-size: 14px;
+    }
 }
 
 a {

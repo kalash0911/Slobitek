@@ -89,38 +89,62 @@ document.addEventListener('DOMContentLoaded', () => {
       opacity: string;
       transition: string;
     };
+    smallScreenInitialStyles: {
+      minWidth: string;
+      minHeight: string;
+      opacity: string;
+      transition: string;
+    };
+    smallScreenFinalStyles: {
+      minWidth: string;
+      minHeight: string;
+      opacity: string;
+      transition: string;
+    };
   }
 
   const lines: LineStyle[] = [
     {
       selector: '.line0',
       initialStyles: { minWidth: '0', minHeight: '0', opacity: '0', transition: 'none' },
-      finalStyles: { minWidth: '136px', minHeight: '136px', opacity: '1', transition: 'all 1s' }
+      finalStyles: { minWidth: '136px', minHeight: '136px', opacity: '1', transition: 'all 1s' },
+      smallScreenInitialStyles: { minWidth: '0', minHeight: '0', opacity: '0', transition: 'none' },
+      smallScreenFinalStyles: { minWidth: '114px', minHeight: '114px', opacity: '1', transition: 'all 1s' }
     },
     {
       selector: '.line1',
       initialStyles: { minWidth: '136px', minHeight: '136px', opacity: '1', transition: 'none' },
-      finalStyles: { minWidth: '320px', minHeight: '320px', opacity: '0.5', transition: 'all 1s' }
+      finalStyles: { minWidth: '320px', minHeight: '320px', opacity: '0.5', transition: 'all 1s' },
+      smallScreenInitialStyles: { minWidth: '114px', minHeight: '114px', opacity: '1', transition: 'none' },
+      smallScreenFinalStyles: { minWidth: '230px', minHeight: '230px', opacity: '0.5', transition: 'all 1s' }
     },
     {
       selector: '.line2',
       initialStyles: { minWidth: '320px', minHeight: '320px', opacity: '0.5', transition: 'none' },
-      finalStyles: { minWidth: '720px', minHeight: '720px', opacity: '0.4', transition: 'all 1s' }
+      finalStyles: { minWidth: '720px', minHeight: '720px', opacity: '0.4', transition: 'all 1s' },
+      smallScreenInitialStyles: { minWidth: '230px', minHeight: '230px', opacity: '0.5', transition: 'none' },
+      smallScreenFinalStyles: { minWidth: '380px', minHeight: '380px', opacity: '0.4', transition: 'all 1s' }
     },
     {
       selector: '.line3',
       initialStyles: { minWidth: '720px', minHeight: '720px', opacity: '0.4', transition: 'none' },
-      finalStyles: { minWidth: '1040px', minHeight: '1040px', opacity: '0.3', transition: 'all 1s' }
+      finalStyles: { minWidth: '1040px', minHeight: '1040px', opacity: '0.3', transition: 'all 1s' },
+      smallScreenInitialStyles: { minWidth: '380px', minHeight: '380px', opacity: '0.4', transition: 'none' },
+      smallScreenFinalStyles: { minWidth: '520px', minHeight: '520px', opacity: '0.3', transition: 'all 1s' }
     },
     {
       selector: '.line4',
       initialStyles: { minWidth: '1040px', minHeight: '1040px', opacity: '0.3', transition: 'none' },
-      finalStyles: { minWidth: '1400px', minHeight: '1400px', opacity: '0.2', transition: 'all 1s' }
+      finalStyles: { minWidth: '1400px', minHeight: '1400px', opacity: '0.2', transition: 'all 1s' },
+      smallScreenInitialStyles: { minWidth: '520px', minHeight: '520px', opacity: '0.3', transition: 'none' },
+      smallScreenFinalStyles: { minWidth: '720px', minHeight: '720px', opacity: '0.2', transition: 'all 1s' }
     },
     {
       selector: '.line5',
       initialStyles: { minWidth: '1400px', minHeight: '1400px', opacity: '0.2', transition: 'none' },
-      finalStyles: { minWidth: '1900px', minHeight: '1900px', opacity: '0', transition: 'all 1s' }
+      finalStyles: { minWidth: '1900px', minHeight: '1900px', opacity: '0', transition: 'all 1s' },
+      smallScreenInitialStyles: { minWidth: '720px', minHeight: '720px', opacity: '0.2', transition: 'none' },
+      smallScreenFinalStyles: { minWidth: '920px', minHeight: '920px', opacity: '0', transition: 'all 1s' }
     }
   ];
 
@@ -129,6 +153,21 @@ document.addEventListener('DOMContentLoaded', () => {
     element.style.minHeight = styles.minHeight;
     element.style.opacity = styles.opacity;
     element.style.transition = styles.transition;
+  };
+
+  const applyResponsiveStyles = () => {
+    const isSmallScreen = window.innerWidth <= 768;
+
+    lines.forEach(line => {
+      const elements = document.querySelectorAll(line.selector) as NodeListOf<HTMLElement>;
+      elements.forEach(element => {
+        if (isSmallScreen) {
+          applyStyles(element, line.smallScreenFinalStyles);
+        } else {
+          applyStyles(element, line.finalStyles);
+        }
+      });
+    });
   };
 
   const handleClick = () => {
@@ -141,11 +180,12 @@ document.addEventListener('DOMContentLoaded', () => {
     lines.forEach(line => {
       const elements = document.querySelectorAll(line.selector) as NodeListOf<HTMLElement>;
       elements.forEach(element => {
-        applyStyles(element, line.finalStyles);
+        applyResponsiveStyles();
         setTimeout(() => {
-          applyStyles(element, line.initialStyles);
+          const isSmallScreen = window.innerWidth <= 768;
+          applyStyles(element, isSmallScreen ? line.smallScreenInitialStyles : line.initialStyles);
           isAnimating = false;
-        }, animationDelayTime); // Revert back after 1 second
+        }, 1000); // Revert back after 1 second
       });
     });
   };
@@ -155,6 +195,9 @@ document.addEventListener('DOMContentLoaded', () => {
   navSlides.forEach(navSlide => {
     navSlide.addEventListener('click', handleClick);
   });
+
+  window.addEventListener('resize', applyResponsiveStyles);
+  applyResponsiveStyles(); // Apply styles on initial load
 });
 
 // Animation for sector-icon
@@ -234,12 +277,3 @@ if (circle1 && circle2 && sectorCircleSvg1 && sectorCircleSvg2) {
   verticalSliderNav.on('slideNextTransitionStart', () => playAnimation(false));
   verticalSliderNav.on('slidePrevTransitionStart', () => playAnimation(true));
 }
-
-
-
-
-
-
-
-
-

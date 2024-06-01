@@ -1,3 +1,7 @@
+html {
+    scroll-behavior: smooth;
+}
+
 #wrapper {
     position: relative;
     overflow: hidden;
@@ -8,9 +12,78 @@
     max-width: 1720px;
     padding: 0 40px;
     margin: 0 auto;
+
+    @include media('<phone') {
+        padding: 0 14px;
+    }
 }
 
 .title {
     margin-bottom: 24px;
     font: $medium 80px/1 $Montserrat;
+
+    @include media('<tablet') {
+        font-size: 45px;
+    }
+
+    @include media('<phone') {
+        font-size: 30px;
+    }
+}
+
+.main-btn {
+    display: inline-block;
+    position: relative;
+    padding: 2px;
+    border-radius: 30px;
+    overflow: hidden;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: rotate(0deg) translate(-50%, -50%);
+        transform-origin: 0 0;
+        width: 150%;
+        height: 400%;
+        background: rgb(91, 128, 230);
+        background: linear-gradient(
+            90deg,
+            rgba(91, 128, 230, 1) 0%,
+            rgba(120, 88, 199, 1) 100%
+        );
+        z-index: -1;
+        transition: $anim_1;
+    }
+
+    &:hover {
+        span {
+            background-color: transparent;
+        }
+    }
+
+    &.show {
+        &::before {
+            top: 50%;
+            left: 50%;
+            transform: rotate(360deg) translate(-50%, -50%);
+        }
+    }
+
+    span {
+        display: block;
+        padding: 12px 30px;
+        text-align: center;
+        font: $regular 16px / normal $Montserrat;
+        text-transform: uppercase;
+        color: $white;
+        background-color: $blue1F;
+        border-radius: 30px;
+        transition: $anim_03;
+
+        @include media('<phone') {
+            font-size: 12px;
+        }
+    }
 }
