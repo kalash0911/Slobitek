@@ -3,7 +3,6 @@
 .main-section {
     position: relative;
     min-height: 100vh;
-    background-color: #05051c;
 
     .bg-block {
         &.show {
@@ -16,38 +15,32 @@
 
     .bg {
         position: absolute;
-        bottom: 100px;
-        left: 50%;
-        transform: translate(-50%);
-        max-width: 1920px;
-
-        @include media('<widescreen') {
-            max-width: 100%;
-        }
-
-        @include media('<tablet') {
-            display: none;
-        }
-    }
-
-    .bg-img {
-        display: none;
-        position: absolute;
-        top: 0;
+        bottom: 120px;
         left: 0;
         width: 100%;
         height: 100%;
         object-fit: cover;
-
-        @include media('<tablet') {
-            display: block;
-        }
-    }
-
-    .bg,
-    .bg-img {
         opacity: 0;
         transition: $anim_07 0.7s;
+
+        @include media('<tablet') {
+            display: none;
+        }
+
+        &.img {
+            display: none;
+
+            @include media('<tablet') {
+                display: block;
+                bottom: 0;
+                min-width: 110%;
+                object-position: right;
+            }
+
+            @include media('<phone') {
+                min-width: 100%;
+            }
+        }
     }
 
     .container {
@@ -148,7 +141,7 @@
         transform: translateY(30px);
         transition: $anim_07 1s;
 
-        @include media('<widescreen') {
+        @include media('<laptop') {
             font-size: 64px;
         }
 
@@ -202,7 +195,7 @@
         transform: translateY(200%) rotate(180deg);
         animation: btnScrollAnim 2s ease-in-out forwards;
 
-        @include media('<widescreen') {
+        @include media('<laptop') {
             width: 120px;
             height: 120px;
             gap: 8px;
@@ -254,7 +247,7 @@
             transition: $anim_03 1.5s;
             opacity: 0;
 
-            @include media('<widescreen') {
+            @include media('<laptop') {
                 font-size: 14px;
             }
         }
