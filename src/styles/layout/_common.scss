@@ -57,6 +57,14 @@
         gap: 25px;
         flex: 1 1 auto;
         padding: 165px 0 50px 0;
+
+        @include media('<laptop') {
+            padding: 100px 0 50px 0;
+        }
+
+        @include media('<tablet') {
+            padding: 150px 0 50px 0;
+        }
     }
 
     .sup-tite-box {
