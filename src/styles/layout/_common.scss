@@ -147,6 +147,7 @@
         color: rgba($white, 0.8);
         letter-spacing: 2px;
         text-shadow: $black 1px 1px 20px;
+        user-select: none;
         opacity: 0;
         transform: translateY(30px);
         transition: $anim_07 1s;
