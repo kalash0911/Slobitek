@@ -30,16 +30,11 @@
 
         &.img {
             display: none;
+            top: -50px;
+            bottom: auto;
 
             @include media('<tablet') {
                 display: block;
-                bottom: 0;
-                min-width: 110%;
-                object-position: right;
-            }
-
-            @include media('<phone') {
-                min-width: 100%;
             }
         }
     }
@@ -65,18 +60,32 @@
 
         @include media('<tablet') {
             padding: 150px 0 50px 0;
+            justify-content: center;
+        }
+
+        @include media('<phone') {
+            padding: 200px 0 50px 0;
+            gap: 0;
         }
     }
 
     .sup-tite-box {
         position: relative;
 
+        @include media('<tablet') {
+            margin-bottom: 18px;
+        }
+
+        @include media('<phone') {
+            margin-bottom: 0;
+        }
+
         &.show {
             .arcing-wrap {
                 width: 171px;
 
                 @include media('<phone') {
-                    width: 129px;
+                    width: 86px;
                 }
             }
 
@@ -85,7 +94,7 @@
                 opacity: 1;
 
                 @include media('<phone') {
-                    top: 80%;
+                    top: 55%;
                 }
             }
         }
@@ -95,7 +104,7 @@
         min-width: 171px;
 
         @include media('<phone') {
-            min-width: 129px;
+            min-width: 86px;
         }
     }
 
@@ -116,8 +125,8 @@
         border-top: 1px solid $white;
 
         @include media('<phone') {
-            width: 129px;
-            height: 82px;
+            width: 86px;
+            height: 60px;
         }
     }
 
@@ -127,7 +136,7 @@
         left: 50%;
         transform: translate(-50%);
         margin: 0;
-        font: $regular 16px/1.25 $Montserrat;
+        font: $regular 16px / 1.25 $Montserrat;
         letter-spacing: 4px;
         text-transform: uppercase;
         color: $white;
@@ -137,13 +146,15 @@
 
         @include media('<phone') {
             font-size: 12px;
+            letter-spacing: 3px;
         }
     }
 
     .main-title {
+        max-width: 1200px;
         margin-bottom: 40px;
         text-align: center;
-        font: $semi-bold 100px / normal $Montserrat;
+        font: $medium 80px / normal $Montserrat;
         color: rgba($white, 0.8);
         letter-spacing: 2px;
         text-shadow: $black 1px 1px 20px;
@@ -158,11 +169,12 @@
 
         @include media('<tablet') {
             font-size: 38px;
+            margin-bottom: 24px;
         }
 
         @include media('<phone') {
-            margin-bottom: 16px;
-            font-size: 20px;
+            font-size: 24px;
+            letter-spacing: 0;
         }
 
         &.show {
@@ -176,6 +188,10 @@
         transform: translate(-50%);
         opacity: 0;
         transition: $anim_07 1s;
+
+        @include media('<phone') {
+            margin-bottom: 50px;
+        }
 
         &.show {
             opacity: 1;
@@ -213,8 +229,10 @@
         }
 
         @include media('<tablet') {
-            opacity: 0;
-            pointer-events: none;
+            gap: 8px;
+            background: none;
+            border: none;
+            outline: none;
         }
 
         &:hover {
@@ -262,12 +280,21 @@
             @include media('<laptop') {
                 font-size: 14px;
             }
+
+            @include media('<phone') {
+                font-size: 12px;
+            }
         }
 
         img {
             width: 28px;
             height: 28px;
             transition: $anim_03;
+
+            @include media('<laptop') {
+                width: 20px;
+                height: 20px;
+            }
         }
 
         @keyframes btnScrollAnim {

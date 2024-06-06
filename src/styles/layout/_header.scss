@@ -5,6 +5,17 @@
     padding: 40px 0;
     z-index: 10;
 
+    .content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+
+        @include media('<widescreen') {
+            align-items: center;
+        }
+    }
+
     .logo {
         position: relative;
         display: block;
@@ -170,6 +181,284 @@
         100% {
             opacity: 1;
             stroke-dashoffset: 0;
+        }
+    }
+
+    .menu-wrap {
+        display: flex;
+        align-items: center;
+        column-gap: 40px;
+        row-gap: 0;
+
+        @include media('<widescreen') {
+            position: absolute;
+            top: 0;
+            right: -50%;
+            height: 100vh;
+            min-height: 100vh;
+            width: 40%;
+            flex-direction: column;
+            padding: 100px 40px 40px 40px;
+            background: rgba(255, 255, 255, 0);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 1;
+            transition: $anim_05;
+            overflow: auto;
+        }
+
+        @include media('<tablet') {
+            right: -70%;
+            width: 70%;
+        }
+
+        @include media('<phone') {
+            right: -100%;
+            width: 100%;
+            padding: 100px 14px;
+        }
+
+        .active & {
+            right: 0;
+        }
+    }
+
+    .menu {
+        display: flex;
+        flex-wrap: wrap;
+        column-gap: 40px;
+        row-gap: 0;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        @include media('<laptop') {
+            column-gap: 25px;
+        }
+
+        @include media('<widescreen') {
+            flex-direction: column;
+            width: 100%;
+        }
+    }
+
+    .menu-item {
+        @include media('<widescreen') {
+            padding: 16px 0 20px 0;
+            border-bottom: 1px solid rgba($white, 0.3);
+        }
+    }
+
+    .link {
+        position: relative;
+        font: $regular 16px / normal $Montserrat;
+        color: $white;
+
+        @include media('<laptop') {
+            font-size: 14px;
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: calc(100% + 4px);
+            left: 0;
+            height: 2px;
+            width: 0;
+            background: rgb(174, 20, 228);
+            background: linear-gradient(
+                90deg,
+                rgba(174, 20, 228, 0) 0%,
+                rgba(119, 86, 198, 1) 50%,
+                rgba(85, 135, 235, 1) 100%
+            );
+            transition: $anim_03;
+        }
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: calc(100% + 2px);
+            left: 0;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background-color: $blueEA;
+            transition: $anim_03;
+            opacity: 0;
+        }
+
+        &::before,
+        &::after {
+            @include media('<widescreen') {
+                display: none;
+            }
+        }
+
+        &:hover {
+            &::after {
+                width: 100%;
+            }
+            &::before {
+                left: calc(100% - 6px);
+                opacity: 1;
+            }
+        }
+    }
+
+    .search-box {
+        display: flex;
+        align-items: center;
+        gap: 40px;
+
+        @include media('<widescreen') {
+            position: relative;
+            justify-content: space-between;
+            align-items: start;
+            width: 100%;
+            padding: 16px 0;
+            border-bottom: 1px solid rgba($white, 0.3);
+        }
+    }
+
+    .search {
+        background: none;
+        border: none;
+        stroke: $white;
+        stroke-width: 3;
+        transition: $anim_03;
+        padding: 0;
+
+        &:hover {
+            stroke-width: 5;
+        }
+
+        svg {
+            width: 18px;
+        }
+    }
+
+    .search-file {
+        position: fixed;
+        top: -100%;
+        left: 50%;
+        transform: translate(-50%);
+        width: 100%;
+        max-width: 885px;
+        transition: $anim_05;
+        z-index: 2;
+
+        @include media('<laptop') {
+            max-width: 500px;
+        }
+
+        @include media('<widescreen') {
+            position: relative;
+            top: 0;
+            left: 0;
+            transform: none;
+            display: none;
+        }
+
+        &.mob {
+            display: none;
+
+            @include media('<widescreen') {
+                display: block;
+                position: absolute;
+                opacity: 0;
+            }
+        }
+
+        &.active {
+            top: 50%;
+        }
+
+        input {
+            width: 100%;
+            padding: 25px 40px;
+            border-radius: 50px;
+            border: none;
+            font: $regular 16px/1.2 $Montserrat;
+            color: #04041f;
+
+            @include media('<laptop') {
+                font-size: 20px;
+                padding: 5px 25px;
+            }
+
+            @include media('<widescreen') {
+                padding: 5px 50px 5px 15px;
+            }
+        }
+    }
+
+    .main-btn {
+        @include media('<widescreen') {
+            width: 100%;
+            border-radius: 0;
+            padding: 0;
+        }
+
+        &::before {
+            @include media('<widescreen') {
+                display: none;
+            }
+        }
+
+        span {
+            @include media('<widescreen') {
+                text-align: left;
+                padding: 16px 0 20px 0;
+                background: none;
+            }
+        }
+    }
+}
+
+.burger {
+    display: none;
+    position: relative;
+    min-width: 30px;
+    height: 40px;
+    z-index: 2;
+    border: none;
+    outline: none;
+    background: none;
+
+    @include media('<widescreen') {
+        display: block;
+    }
+
+    &::before,
+    &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: $white;
+        border-radius: 10px;
+        transition: $anim_07;
+    }
+
+    &::before {
+        top: 13px;
+    }
+
+    &::after {
+        bottom: 13px;
+    }
+
+    .active & {
+        &::before {
+            top: 18px;
+            transform: rotate(-225deg);
+        }
+
+        &::after {
+            bottom: 20px;
+            transform: rotate(225deg);
         }
     }
 }

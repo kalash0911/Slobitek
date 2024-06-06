@@ -2,9 +2,57 @@ html {
     scroll-behavior: smooth;
 }
 
+body {
+    &.body_lock {
+        overflow: hidden;
+    }
+}
+
 #wrapper {
     position: relative;
     overflow: hidden;
+}
+
+.overflow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    z-index: 1;
+    visibility: hidden;
+    opacity: 0;
+    transition: $anim_03;
+
+    .active & {
+        z-index: 0;
+        visibility: visible;
+        opacity: 1;
+    }
+}
+
+.overflow-blur {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0);
+    backdrop-filter: blur(12.4px);
+    -webkit-backdrop-filter: blur(12.4px);
+    z-index: -1;
+    visibility: hidden;
+    opacity: 0;
+    transition: $anim_03;
+
+    &.active {
+        z-index: 1;
+        visibility: visible;
+        opacity: 2;
+    }
 }
 
 .container {
@@ -54,7 +102,7 @@ html {
             rgba(120, 88, 199, 1) 100%
         );
         z-index: -1;
-        transition: $anim_1;
+        transition: $anim_1 2s;
     }
 
     &:hover {
@@ -85,5 +133,22 @@ html {
         @include media('<phone') {
             font-size: 12px;
         }
+    }
+}
+
+.close-btn {
+    position: fixed;
+    top: 15%;
+    right: 15%;
+    background: none;
+    border: none;
+    transition: $anim_03;
+
+    &:hover {
+        transform: rotate(180deg);
+    }
+
+    svg {
+        display: block;
     }
 }
