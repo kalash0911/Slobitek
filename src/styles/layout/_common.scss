@@ -32,6 +32,7 @@
             display: none;
             top: -50px;
             bottom: auto;
+            object-position: left;
 
             @include media('<tablet') {
                 display: block;
@@ -65,7 +66,7 @@
 
         @include media('<phone') {
             padding: 200px 0 50px 0;
-            gap: 0;
+            gap: 40px;
         }
     }
 
@@ -93,9 +94,9 @@
                 top: 110%;
                 opacity: 1;
 
-                @include media('<phone') {
+                /*                 @include media('<phone') {
                     top: 55%;
-                }
+                } */
             }
         }
     }
@@ -115,6 +116,10 @@
         width: 0;
         overflow: hidden;
         transition: $anim_1 1.5s;
+
+        @include media('<phone') {
+            height: 30px;
+        }
     }
 
     .arcing {
@@ -190,7 +195,7 @@
         transition: $anim_07 1s;
 
         @include media('<phone') {
-            margin-bottom: 50px;
+            margin-bottom: 10px;
         }
 
         &.show {
