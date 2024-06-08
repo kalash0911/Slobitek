@@ -1,4 +1,4 @@
-/* header */
+// Header
 
 const burger = document.querySelector('.burger');
 const linkClose = document.querySelectorAll('.link-close');
@@ -21,7 +21,22 @@ for (let i = 0; i < linkClose.length; ++i) {
   });
 }
 
-/* search */
+// Header scroll
+
+const header: HTMLElement | null = document.getElementById('header');
+
+if (header) {
+  // Обработчик события прокрутки
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 0) {
+      header.classList.add('scroll');
+    } else {
+      header.classList.remove('scroll');
+    }
+  });
+}
+
+// Search 
 
 const searchBtn = document.querySelector('.search-btn');
 const searchFile = document.querySelector('.search-file');
@@ -38,7 +53,6 @@ overflowBlur?.addEventListener('click', function () {
   overflowBlur.classList.remove('active');
   document.body.classList.remove('body_lock');
 });
-
 
 // Scroll anim
 
