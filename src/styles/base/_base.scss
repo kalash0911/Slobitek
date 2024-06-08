@@ -67,15 +67,77 @@ body {
 }
 
 .title {
+    position: relative;
     margin-bottom: 24px;
-    font: $medium 80px/1 $Montserrat;
+    font: $medium 60px / normal $Montserrat;
 
     @include media('<tablet') {
         font-size: 45px;
     }
 
     @include media('<phone') {
+        padding-right: 40%;
         font-size: 30px;
+    }
+
+    span {
+        opacity: 0;
+        transition: $anim_2;
+
+        @include media('<phone') {
+            transition: $anim_03 0.7s;
+        }
+    }
+
+    &::before,
+    &::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 0;
+        display: none;
+
+        @include media('<phone') {
+            display: block;
+        }
+    }
+
+    &::before {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: $blueEA;
+        transition: $anim_1;
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        background: rgb(174, 20, 228);
+        background: linear-gradient(
+            270deg,
+            rgba(174, 20, 228, 0) 0%,
+            rgba(119, 86, 198, 1) 50%,
+            rgba(85, 135, 235, 1) 100%
+        );
+        transition: $anim_1;
+    }
+
+    &.show {
+        span {
+            opacity: 1;
+        }
+
+        &::before {
+            right: 35%;
+        }
+
+        &::after {
+            width: 35%;
+        }
     }
 }
 

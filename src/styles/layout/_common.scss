@@ -233,6 +233,7 @@
             background: none;
             border: none;
             outline: none;
+            box-shadow: none;
         }
 
         &:hover {
@@ -332,30 +333,7 @@
         margin-bottom: 60px;
 
         @include media('<tablet') {
-            margin-bottom: 40px;
-        }
-    }
-
-    .block {
-        display: flex;
-        justify-content: space-between;
-        gap: 30px;
-
-        @include media('<widescreen') {
-            flex-wrap: wrap;
-        }
-    }
-
-    .item {
-        max-width: 340px;
-
-        @include media('<widescreen') {
-            width: 45%;
-            max-width: 100%;
-        }
-
-        @include media('<phone_x') {
-            width: 100%;
+            margin-bottom: 30px;
         }
     }
 
@@ -368,10 +346,6 @@
 
         @include media('<tablet') {
             margin-bottom: 24px;
-        }
-
-        @include media('<phone_x') {
-            text-align: start;
         }
 
         &.show {
@@ -387,20 +361,95 @@
     }
 
     .item-title {
-        margin-bottom: 8px;
+        margin-bottom: 16px;
         font: $medium 24px / normal $Montserrat;
+        opacity: 0;
+        transform: translateY(50px);
+        transition: $anim_1;
 
         @include media('<laptop') {
             font-size: 20px;
         }
 
+        @include media('<tablet_s') {
+            text-align: center;
+        }
+
         @include media('<phone') {
             font-size: 18px;
+        }
+
+        &.show {
+            opacity: 1;
+            transform: translateY(0);
         }
     }
 
     .item-text {
         margin-bottom: 0;
+        opacity: 0;
+        transform: translateY(50px);
+        transition: $anim_1 0.5s;
+
+        @include media('<tablet_s') {
+            text-align: center;
+        }
+
+        &.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .deliverSlider {
+        @include media('<phone') {
+            overflow: visible;
+        }
+    }
+
+    .slider-nav {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        padding-top: 24px;
+    }
+
+    .arrow {
+        cursor: pointer;
+        transition: $anim_03;
+
+        &.prev {
+            transform: rotate(-180deg);
+        }
+
+        &.swiper-button-disabled {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        img {
+            display: block;
+        }
+    }
+
+    .pag {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        max-width: max-content;
+    }
+
+    .swiper-pagination-bullet {
+        margin: 0 !important;
+        width: 8px;
+        height: 8px;
+        border: 1px solid $white;
+        transition: $anim_03;
+
+        &.swiper-pagination-bullet-active {
+            background-color: $white;
+        }
     }
 }
 

@@ -78,6 +78,76 @@ for (const elm of elements) {
 
 // Swiper
 
+
+function destroySlidersOnResize(selector, width, obj, moreThan) {
+  const init = {
+    ...obj,
+  };
+
+  const win = window;
+  const sliderSelector = document.querySelector(selector);
+  // @ts-ignore
+  let swiper = new Swiper(selector, init);
+
+  const toggleInit = () => {
+    const neededWidth = moreThan
+      ? win.innerWidth >= width
+      : win.innerWidth <= width;
+    if (neededWidth) {
+      if (!sliderSelector?.classList.contains("swiper-initialized")) {
+        // @ts-ignore
+        swiper = new Swiper(selector, init);
+      }
+    } else if (sliderSelector.classList.contains("swiper-initialized")) {
+      swiper.destroy();
+    }
+  };
+
+  ["load", "resize"].forEach((evt) =>
+    win.addEventListener(evt, toggleInit, false)
+  );
+}
+
+// @ts-ignore
+destroySlidersOnResize(".deliverSlider", 99999, {
+  spaceBetween: 95,
+  slidesPerView: 4,
+
+  breakpoints: {
+    0: {
+      slidesPerView: 1,
+      spaceBetween: 40,
+    },
+    640: {
+      slidesPerView: 2,
+      spaceBetween: 40,
+    },
+    1024: {
+      slidesPerView: 3,
+      spaceBetween: 40,
+    },
+    1200: {
+      slidesPerView: 4,
+      spaceBetween: 40,
+    },
+    1500: {
+      slidesPerView: 4,
+      spaceBetween: 95,
+    },
+  },
+
+  navigation: {
+    prevEl: ".prev", 
+    nextEl: ".next",
+  },
+
+  pagination: {
+    el: '.pag',
+    clickable: true,
+  },
+});
+
+
 const animationDelayTime = 1000; // Delay for swip swiper and circle-icon anim
 
 // @ts-ignore
