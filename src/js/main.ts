@@ -78,7 +78,7 @@ for (const elm of elements) {
 
 // Swiper
 
-
+// @ts-ignore
 function destroySlidersOnResize(selector, width, obj, moreThan) {
   const init = {
     ...obj,
