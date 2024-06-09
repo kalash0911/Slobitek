@@ -50,9 +50,8 @@ h6,
 
 p {
     margin: 0 0 1em;
-    font: $medium 16px / 1.5 $Montserrat;
+    font: $regular 16px / 1.5 $Montserrat;
     color: rgba($white, 0.7);
-    font-weight: $regular;
 
     @include media('<tablet') {
         font-size: 14px;

@@ -68,15 +68,16 @@ body {
 
 .title {
     position: relative;
-    margin-bottom: 24px;
+    margin-bottom: 60px;
     font: $medium 60px / normal $Montserrat;
 
     @include media('<tablet') {
+        padding-right: 40%;
+        margin-bottom: 30px;
         font-size: 45px;
     }
 
     @include media('<phone') {
-        padding-right: 40%;
         font-size: 30px;
     }
 
@@ -84,7 +85,7 @@ body {
         opacity: 0;
         transition: $anim_2;
 
-        @include media('<phone') {
+        @include media('<tablet') {
             transition: $anim_03 0.7s;
         }
     }
@@ -98,7 +99,7 @@ body {
         right: 0;
         display: none;
 
-        @include media('<phone') {
+        @include media('<tablet') {
             display: block;
         }
     }

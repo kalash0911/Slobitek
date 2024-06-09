@@ -403,3 +403,24 @@ if (circle1 && circle2 && sectorCircleSvg1 && sectorCircleSvg2) {
   verticalSliderNav.on('slideNextTransitionStart', () => playAnimation(false));
   verticalSliderNav.on('slidePrevTransitionStart', () => playAnimation(true));
 }
+
+// @ts-ignore
+destroySlidersOnResize(".projectsSlider", 99999, {
+  slidesPerView: 1,
+  speed: 700,
+
+  breakpoints: {
+    0: {
+      spaceBetween: 20,
+    },
+    768: {
+      spaceBetween: 0,
+    },
+  },
+
+  navigation: {
+    nextEl: ".projects-next",
+    prevEl: ".projects-prev",
+  },
+
+});
