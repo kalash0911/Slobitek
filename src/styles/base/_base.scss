@@ -218,6 +218,51 @@ body {
     }
 }
 
+.def-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding-top: 24px;
+}
+
+.def-arrow {
+    cursor: pointer;
+    transition: $anim_03;
+
+    &.prev {
+        transform: rotate(-180deg);
+    }
+
+    &.swiper-button-disabled {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    img {
+        display: block;
+    }
+}
+
+.def-pag {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    max-width: max-content;
+
+    .swiper-pagination-bullet {
+        margin: 0 !important;
+        width: 8px;
+        height: 8px;
+        border: 1px solid $white;
+        transition: $anim_03;
+
+        &.swiper-pagination-bullet-active {
+            background-color: $white;
+        }
+    }
+}
+
 *::-webkit-scrollbar {
     width: 7px;
 }

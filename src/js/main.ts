@@ -108,45 +108,6 @@ function destroySlidersOnResize(selector, width, obj, moreThan) {
   );
 }
 
-// @ts-ignore
-destroySlidersOnResize(".deliverSlider", 99999, {
-  spaceBetween: 95,
-  slidesPerView: 4,
-
-  breakpoints: {
-    0: {
-      slidesPerView: 1,
-      spaceBetween: 40,
-    },
-    640: {
-      slidesPerView: 2,
-      spaceBetween: 40,
-    },
-    1024: {
-      slidesPerView: 3,
-      spaceBetween: 40,
-    },
-    1200: {
-      slidesPerView: 4,
-      spaceBetween: 40,
-    },
-    1500: {
-      slidesPerView: 4,
-      spaceBetween: 95,
-    },
-  },
-
-  navigation: {
-    prevEl: ".prev", 
-    nextEl: ".next",
-  },
-
-  pagination: {
-    el: '.pag',
-    clickable: true,
-  },
-});
-
 
 const animationDelayTime = 1000; // Delay for swip swiper and circle-icon anim
 
@@ -405,6 +366,45 @@ if (circle1 && circle2 && sectorCircleSvg1 && sectorCircleSvg2) {
 }
 
 // @ts-ignore
+destroySlidersOnResize(".deliverSlider", 99999, {
+  spaceBetween: 95,
+  slidesPerView: 4,
+
+  breakpoints: {
+    0: {
+      slidesPerView: 1,
+      spaceBetween: 40,
+    },
+    640: {
+      slidesPerView: 2,
+      spaceBetween: 40,
+    },
+    1024: {
+      slidesPerView: 3,
+      spaceBetween: 40,
+    },
+    1200: {
+      slidesPerView: 4,
+      spaceBetween: 40,
+    },
+    1500: {
+      slidesPerView: 4,
+      spaceBetween: 95,
+    },
+  },
+
+  navigation: {
+    prevEl: ".deliver-prev", 
+    nextEl: ".deliver-next",
+  },
+
+  pagination: {
+    el: '.deliver-pag',
+    clickable: true,
+  },
+});
+
+// @ts-ignore
 destroySlidersOnResize(".projectsSlider", 99999, {
   slidesPerView: 1,
   speed: 700,
@@ -421,6 +421,35 @@ destroySlidersOnResize(".projectsSlider", 99999, {
   navigation: {
     nextEl: ".projects-next",
     prevEl: ".projects-prev",
+  },
+
+});
+
+// @ts-ignore
+destroySlidersOnResize(".aboutSlider", 99999, {
+  slidesPerView: 1,
+  spaceBetween: 40,
+  speed: 1000,
+  direction: "vertical",
+  autoHeight: true,
+
+  breakpoints: {
+    0: {
+      direction: "horizontal",
+    },
+    980: {
+      direction: "vertical",
+    },
+  },
+
+  pagination: {
+    el: ".about-pag",
+    clickable: true,
+  },
+
+  navigation: {
+    nextEl: ".about-next",
+    prevEl: ".about-prev",
   },
 
 });
