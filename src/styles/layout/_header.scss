@@ -281,6 +281,11 @@
             font-size: 14px;
         }
 
+        @include media('<widescreen') {
+            display: block;
+            width: 100%;
+        }
+
         &::after {
             content: '';
             position: absolute;
