@@ -6,9 +6,17 @@
     z-index: 10;
     transition: $anim_03;
 
+    @include media('<phone') {
+        padding: 20px 0;
+    }
+
     &.scroll {
         background-color: rgba(#04041f, 0.8);
         padding: 15px 0;
+
+        @include media('<phone') {
+            padding: 7px 0;
+        }
     }
 
     .content {
@@ -27,8 +35,8 @@
         display: block;
         max-width: max-content;
 
-        svg {
-            display: block;
+        @include media('<phone') {
+            transform: scale(0.7);
         }
     }
 
@@ -168,6 +176,10 @@
         top: 0;
         left: 32px;
 
+        svg {
+            display: block;
+        }
+
         path {
             animation: logo-anim 0.7s linear 0.8s forwards;
             opacity: 0;
@@ -267,7 +279,7 @@
 
     .menu-item {
         @include media('<widescreen') {
-            padding: 16px 0 20px 0;
+            padding: 18px 0;
             border-bottom: 1px solid rgba($white, 0.3);
         }
     }
@@ -344,7 +356,7 @@
             justify-content: space-between;
             align-items: start;
             width: 100%;
-            padding: 16px 0;
+            padding: 18px 0;
             border-bottom: 1px solid rgba($white, 0.3);
             margin-bottom: 22px;
         }

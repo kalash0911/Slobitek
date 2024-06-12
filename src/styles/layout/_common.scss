@@ -1033,11 +1033,11 @@
         min-height: 316px;
 
         @include media('<laptop') {
-            min-height: 230px;
+            min-height: 180px;
         }
 
         @include media('<tablet') {
-            min-height: 180px;
+            min-height: 150px;
         }
 
         img {
@@ -1102,8 +1102,14 @@
         border-radius: 50%;
 
         @include media('<laptop') {
-            width: 75px;
-            height: 75px;
+            width: 55px;
+            height: 55px;
+        }
+
+        img {
+            @include media('<laptop') {
+                transform: scale(0.8);
+            }
         }
     }
 
@@ -1115,6 +1121,14 @@
         -webkit-line-clamp: 6;
         -webkit-box-orient: vertical;
         overflow: hidden;
+
+        @include media('<laptop') {
+            -webkit-line-clamp: 4;
+        }
+
+        @include media('<phone') {
+            -webkit-line-clamp: 6;
+        }
     }
 
     .projectsSlider {
@@ -1125,7 +1139,7 @@
         transition: $anim_07;
 
         @include media('<laptop') {
-            max-width: 500px;
+            max-width: 400px;
         }
 
         @include media('<tablet') {
@@ -1171,7 +1185,8 @@
         z-index: 2;
 
         @include media('<laptop') {
-            right: -230px;
+            right: -200px;
+            gap: 14px;
             bottom: 0;
         }
 
@@ -1184,7 +1199,6 @@
 
         @include media('<phone') {
             width: 100%;
-            gap: 14px;
             padding-top: 16px;
         }
 
@@ -1211,8 +1225,8 @@
         opacity: 0;
 
         @include media('<laptop') {
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
         }
 
         @include media('<phone') {
@@ -1251,11 +1265,6 @@
             cursor: not-allowed;
 
             @include media('<laptop') {
-                width: 50px;
-                height: 50px;
-            }
-
-            @include media('<phone') {
                 width: 40px;
                 height: 40px;
             }

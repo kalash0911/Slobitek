@@ -1,3 +1,11 @@
+// For remuve # in url after reload page
+
+window.addEventListener('load', () => {
+  if (window.location.hash) {
+    window.history.replaceState(null, '', window.location.pathname + window.location.search);
+  }
+});
+
 // Header
 
 const burger = document.querySelector('.burger');
