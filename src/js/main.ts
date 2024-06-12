@@ -461,3 +461,34 @@ destroySlidersOnResize(".aboutSlider", 99999, {
   },
 
 });
+
+// @ts-ignore
+destroySlidersOnResize(".blogSlider", 99999, {
+  slidesPerView: 1,
+  speed: 700,
+  spaceBetween: 24,
+
+  breakpoints: {
+    0: {
+      slidesPerView: 1,
+      spaceBetween: 30,
+    },
+    640: {
+      slidesPerView: 2,
+    },
+    768: {
+      slidesPerView: 1,
+    },
+  },
+
+  navigation: {
+    nextEl: ".blog-next",
+    prevEl: ".blog-prev",
+  },
+
+  pagination: {
+    el: '.blog-pag',
+    clickable: true,
+  },
+
+});

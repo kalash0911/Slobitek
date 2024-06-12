@@ -218,17 +218,142 @@ body {
     }
 }
 
+.blog-btn {
+    position: relative;
+
+    .blog-btn-text {
+        position: relative;
+        display: block;
+        padding: 15px 30px;
+        border-radius: 60px;
+        text-align: center;
+        font: $regular 16px / normal $Montserrat;
+        text-transform: uppercase;
+        color: $white;
+        overflow: hidden;
+        background-color: rgba($white, 0.1);
+        box-shadow: inset 0px 15px 20px -17px rgba(0, 0, 0, 0.75);
+
+        @include media('<phone') {
+            padding: 10px 30px;
+        }
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 0;
+            width: 0;
+            height: 0;
+            background: rgb(91, 128, 230);
+            background: linear-gradient(
+                90deg,
+                rgba(91, 128, 230, 1) 0%,
+                rgba(120, 88, 199, 1) 100%
+            );
+            z-index: -1;
+            border-radius: 60px;
+            transition: $anim_03 0.2s;
+        }
+    }
+
+    &::before,
+    &::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: -70px;
+        opacity: 0;
+        transition: $anim_03;
+    }
+
+    &::before {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: $blueEA;
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        background: rgb(174, 20, 228);
+        background: linear-gradient(
+            90deg,
+            rgba(174, 20, 228, 0) 0%,
+            rgba(119, 86, 198, 1) 50%,
+            rgba(85, 135, 235, 1) 100%
+        );
+    }
+
+    $btnAnimSpeed: 0.5s;
+
+    &:hover {
+        &::before {
+            animation: btnDotAnim $btnAnimSpeed ease forwards;
+        }
+        &::after {
+            animation: btnLineAnim $btnAnimSpeed ease forwards;
+        }
+
+        .blog-btn-text {
+            &::before {
+                width: 105%;
+                height: 105%;
+            }
+        }
+    }
+
+    @keyframes btnDotAnim {
+        0% {
+            opacity: 0;
+            left: -70px;
+        }
+        50% {
+            opacity: 1;
+            left: 0px;
+        }
+        100% {
+            opacity: 0;
+            left: 0px;
+        }
+    }
+
+    @keyframes btnLineAnim {
+        0% {
+            opacity: 0;
+            width: 0;
+        }
+        50% {
+            opacity: 1;
+            width: 78px;
+        }
+        100% {
+            opacity: 0;
+            width: 78px;
+        }
+    }
+}
+
 .def-nav {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 20px;
+    gap: 10px;
     padding-top: 24px;
 }
 
 .def-arrow {
     cursor: pointer;
     transition: $anim_03;
+    min-width: 30px;
+    height: 30px;
+    display: grid;
+    place-items: center;
 
     &.prev {
         transform: rotate(-180deg);
