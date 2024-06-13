@@ -1,1 +1,237 @@
-#footer {}
+#footer {
+    position: relative;
+    padding: 65px 0 40px 0;
+    background-color: #0a0a24;
+
+    @include media('<phone') {
+        padding: 30px 0;
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 11px;
+        left: 50%;
+        transform: translate(-50%);
+        width: 0;
+        height: 2px;
+        background-color: rgba($white, 0.3);
+        transition: $anim_1 0.1s;
+
+        @include media('<phone') {
+            display: none;
+        }
+    }
+
+    &.show {
+        &::before {
+            width: 100%;
+        }
+
+        .content {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    .logo {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%);
+        background-color: #0a0a24;
+        padding: 0 20px;
+        opacity: 0;
+        transition: $anim_03;
+
+        @include media('<phone') {
+            transform: translate(-50%, -50%);
+            width: 106px;
+            padding: 0;
+        }
+
+        &.show {
+            opacity: 1;
+        }
+    }
+
+    .content {
+        display: flex;
+        justify-content: space-between;
+        gap: 40px;
+        transform: translateY(100px);
+        opacity: 0;
+        transition: $anim_1 0.5s;
+    }
+
+    .menu {
+        display: flex;
+        flex-wrap: wrap;
+        column-gap: 40px;
+        row-gap: 24px;
+        list-style: none;
+        padding: 0;
+        margin: 0 0 65px 0;
+
+        @include media('<tablet') {
+            flex-direction: column;
+        }
+    }
+
+    .link {
+        position: relative;
+        font: $regular 16px / normal $Montserrat;
+        text-transform: uppercase;
+        color: $white;
+
+        @include media('<phone') {
+            font-size: 14px;
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: calc(100% + 4px);
+            left: 0;
+            height: 2px;
+            width: 0;
+            background: rgb(174, 20, 228);
+            background: linear-gradient(
+                90deg,
+                rgba(174, 20, 228, 0) 0%,
+                rgba(119, 86, 198, 1) 50%,
+                rgba(85, 135, 235, 1) 100%
+            );
+            transition: $anim_03;
+        }
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: calc(100% + 2px);
+            left: 0;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background-color: $blueEA;
+            transition: $anim_03;
+            opacity: 0;
+        }
+
+        &::before,
+        &::after {
+            @include media('<widescreen') {
+                display: none;
+            }
+        }
+
+        &:hover {
+            &::after {
+                width: 100%;
+            }
+            &::before {
+                left: calc(100% - 6px);
+                opacity: 1;
+            }
+        }
+    }
+
+    .text-box {
+        display: flex;
+        flex-wrap: wrap;
+        column-gap: 40px;
+        row-gap: 14px;
+    }
+
+    .text {
+        margin: 0;
+        font: $regular 16px / normal $Montserrat;
+        color: rgba($white, 0.8);
+
+        @include media('<phone') {
+            font-size: 14px;
+        }
+
+        &.f16 {
+            font-size: 16px;
+        }
+
+        &.text-link {
+            white-space: nowrap;
+            text-decoration: underline;
+            text-decoration-color: transparent;
+            transition: $anim_03;
+
+            &:hover {
+                text-decoration-color: inherit;
+            }
+        }
+    }
+
+    .links-wrap {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: end;
+    }
+
+    .soc-box {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        column-gap: 100px;
+        row-gap: 24px;
+
+        @include media('<desktop') {
+            column-gap: 40px;
+        }
+    }
+
+    .soc-links {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 24px;
+    }
+
+    .icon {
+        transition: $anim_03;
+        min-width: max-content;
+
+        &:hover {
+            transform: scale(1.5);
+        }
+
+        img {
+            display: block;
+        }
+    }
+
+    .lang-box {
+        display: flex;
+        gap: 5px;
+        padding: 4px;
+        background-color: rgba(255, 255, 255, 0.1);
+        box-shadow: inset 0px 15px 20px -17px rgba(0, 0, 0, 0.75);
+        border-radius: 50px;
+    }
+
+    .lang {
+        padding: 10px;
+        border-radius: 50%;
+        font: $regular 16px / normal $Montserrat;
+        color: $white;
+        background: transparent;
+        transition: $anim_03;
+
+        &.active {
+            background: rgb(91, 128, 230);
+            background: linear-gradient(
+                90deg,
+                rgb(91, 128, 230) 0%,
+                rgb(120, 88, 199) 100%
+            );
+        }
+    }
+}

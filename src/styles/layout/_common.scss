@@ -2052,6 +2052,10 @@
         @include media('<phone') {
             padding: 8px 0;
         }
+
+        &::-webkit-scrollbar {
+            width: 0;
+        }
     }
 
     .btn-wrap {
