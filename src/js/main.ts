@@ -1,4 +1,21 @@
-// For remuve # in url after reload page
+// For remuve height header when scroll to #anchor
+
+document.addEventListener("DOMContentLoaded", () => {
+  const header = document.querySelector('header');
+  const headerHeight = header ? header.offsetHeight : 0;
+
+  window.addEventListener('hashchange', () => {
+      const targetId = location.hash.substring(1);
+      const targetElement = document.getElementById(targetId);
+
+      if (targetElement) {
+          const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - headerHeight;
+          window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+      }
+  });
+});
+
+// For remuve #anchor in url after reload page
 
 window.addEventListener('load', () => {
   if (window.location.hash) {
@@ -6,7 +23,7 @@ window.addEventListener('load', () => {
   }
 });
 
-// Header
+// Header 
 
 const burger = document.querySelector('.burger');
 const linkClose = document.querySelectorAll('.link-close');
@@ -34,7 +51,6 @@ for (let i = 0; i < linkClose.length; ++i) {
 const header: HTMLElement | null = document.getElementById('header');
 
 if (header) {
-  // Обработчик события прокрутки
   window.addEventListener('scroll', () => {
     if (window.scrollY > 0) {
       header.classList.add('scroll');
@@ -84,7 +100,7 @@ for (const elm of elements) {
   observer.observe(elm);
 }};
 
-// Swiper
+// Swipers
 
 // @ts-ignore
 function destroySlidersOnResize(selector, width, obj, moreThan) {
