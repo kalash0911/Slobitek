@@ -66,6 +66,30 @@ body {
     }
 }
 
+.main-title {
+    margin-bottom: 40px;
+    text-align: center;
+    font: $medium 80px / normal $Montserrat;
+    color: rgba($white, 0.8);
+    letter-spacing: 2px;
+    text-shadow: $black 1px 1px 20px;
+    user-select: none;
+    transition: $anim_07 1s;
+
+    @include media('<laptop') {
+        font-size: 64px;
+    }
+
+    @include media('<tablet') {
+        font-size: 38px;
+    }
+
+    @include media('<phone') {
+        font-size: 24px;
+        letter-spacing: 0;
+    }
+}
+
 .title {
     position: relative;
     margin-bottom: 60px;
@@ -384,6 +408,66 @@ body {
 
         &.swiper-pagination-bullet-active {
             background-color: $white;
+        }
+    }
+}
+
+.info-block {
+    display: flex;
+    column-gap: 16px;
+    row-gap: 14px;
+    margin-bottom: 40px;
+
+    @include media('<tablet') {
+        display: none;
+        position: absolute;
+        left: 40px;
+        bottom: 24px;
+        flex-direction: column;
+        margin: 0;
+    }
+
+    @include media('<phone') {
+        left: 14px;
+    }
+
+    &.mob {
+        display: none;
+
+        @include media('<tablet') {
+            display: flex;
+        }
+    }
+
+    svg {
+        @include media('<tablet') {
+            height: 12px;
+            width: 12px;
+        }
+    }
+
+    .info-box {
+        display: flex;
+        align-items: center;
+        gap: 19px;
+
+        @include media('<tablet') {
+            gap: 8px;
+        }
+    }
+
+    .info-name {
+        margin: 0;
+        font: $regular 16px / normal $Montserrat;
+        text-transform: uppercase;
+        color: $white;
+
+        @include media('<desktop_s') {
+            font-size: 14px;
+        }
+
+        @include media('<phone') {
+            font-size: 12px;
         }
     }
 }
