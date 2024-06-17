@@ -2428,16 +2428,12 @@
         padding: 0;
     }
 
-    .list-item {
-        padding: 8px 0;
-    }
-
     .nav-title {
         font: $regular 14px / normal $Montserrat;
         color: $white;
         transition: $anim_07;
         white-space: nowrap;
-        margin: 0;
+        margin: 8px 0;
         cursor: pointer;
     }
 
@@ -2562,44 +2558,40 @@
             pointer-events: none;
         }
     }
-}
 
-.expertise-nav__svg {
-    height: 2000px;
-    left: 50%;
-    pointer-events: none;
-    position: absolute;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 2150px;
-    z-index: 1;
-}
+    .expertise-nav__svg {
+        height: 2000px;
+        left: 50%;
+        pointer-events: none;
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 2150px;
+        z-index: 1;
+    }
 
-.expertise-nav__svg svg {
-    display: block;
-    height: 100%;
-    width: 100%;
-}
+    .expertise-nav__svg svg {
+        display: block;
+        height: 100%;
+        width: 100%;
+    }
 
-.expertise-nav__svg svg .line line {
-    opacity: 0.1;
-}
+    .expertise-nav__svg svg .line line {
+        opacity: 0.1;
+    }
 
-.expertise-nav__svg svg .circle circle,
-.expertise-nav__svg svg .line line {
-    fill: none;
-    stroke: #00cbd5;
-    stroke-width: 1px;
-}
+    .expertise-nav__svg svg .circle circle,
+    .expertise-nav__svg svg .line line {
+        fill: none;
+        stroke: rgba($white, 0.3);
+        stroke-width: 1px;
+    }
 
-.expertise-nav__svg svg .sector circle {
-    fill: none;
-    stroke: #00cbd5;
-    stroke-width: 66px;
-}
-
-.no-touch .gallery-career__slider-arrow:hover svg {
-    fill: #00cbd5;
+    .expertise-nav__svg svg .sector circle {
+        fill: none;
+        stroke: $blueEA;
+        stroke-width: 66px;
+    }
 }
 
 .our_expertise .meet__col:first-child p {
