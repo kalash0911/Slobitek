@@ -1,5 +1,8 @@
 html {
     scroll-behavior: smooth;
+    cursor:
+        url(../images/icons/cursor.png) 45 45,
+        pointer;
 }
 
 body {
@@ -470,12 +473,6 @@ body {
             font-size: 12px;
         }
     }
-}
-
-* {
-    cursor:
-        url(../images/icons/cursor.png) 45 45,
-        auto;
 }
 
 *::-webkit-scrollbar {
