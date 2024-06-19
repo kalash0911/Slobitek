@@ -1162,7 +1162,8 @@
         span {
             position: absolute;
             left: 10%;
-            bottom: 0;
+            top: 50%;
+            transform: translateY(-50%);
             width: 700px;
             height: 700px;
             border-radius: 50%;
@@ -1382,23 +1383,28 @@
     }
 
     .img-box {
-        max-width: 40%;
-        min-width: 450px;
-
-        @include media('<laptop') {
-            max-width: 450px;
-            min-width: 350px;
-        }
-
-        @include media('<tablet') {
-            max-width: 300px;
-            min-width: 0;
-        }
+        display: flex;
+        justify-content: center;
+        width: 50%;
+        min-width: 350px;
 
         img {
+            height: 700px;
             opacity: 0;
             transform: translateY(50%);
             transition: $anim_1 0.7s;
+
+            @include media('<laptop') {
+                height: 600px;
+            }
+
+            @include media('<desktop') {
+                height: 500px;
+            }
+
+            @include media('<phone') {
+                height: 300px;
+            }
         }
 
         &.show {
