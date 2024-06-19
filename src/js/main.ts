@@ -251,3 +251,15 @@ destroySlidersOnResize(".blogSlider", 99999, {
   },
 
 });
+
+// for cursor 
+
+const ball = document.querySelector('.ball') as HTMLElement;
+
+document.addEventListener("mousemove", function(event: MouseEvent) {
+    const mouseX = event.pageX;
+    const mouseY = event.pageY;
+    
+    ball.style.left = mouseX + "px";
+    ball.style.top = mouseY + "px";
+});
