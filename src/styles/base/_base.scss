@@ -472,24 +472,10 @@ body {
     }
 }
 
-.ball {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 46px;
-    height: 46px;
-    transform: translate(-50%, -50%);
-    pointer-events: none;
-    z-index: 20;
-    border-radius: 50%;
-    background: rgb(50, 0, 218);
-    background: radial-gradient(
-        circle,
-        rgba(50, 0, 218, 1) 0%,
-        rgba(50, 0, 218, 0) 100%
-    );
-    filter: blur(15px);
-    -webkit-filter: blur(15px);
+* {
+    cursor:
+        url(../images/icons/cursor.png) 45 45,
+        auto;
 }
 
 *::-webkit-scrollbar {
