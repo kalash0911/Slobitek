@@ -1,8 +1,17 @@
 html {
     scroll-behavior: smooth;
     cursor:
-        url(../images/icons/cursor.png) 45 45,
-        pointer;
+        url(../images/icons/cursor.png) 16 16,
+        auto;
+}
+
+a,
+button,
+input,
+textarea,
+.def-arrow,
+.swiper-pagination-bullet {
+    cursor: $cursor-hover !important;
 }
 
 body {

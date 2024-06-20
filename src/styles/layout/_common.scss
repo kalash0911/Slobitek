@@ -520,7 +520,7 @@
         transition: $anim_07;
         white-space: nowrap;
         margin: 8px 0;
-        cursor: pointer;
+        cursor: $cursor-hover;
         user-select: none;
 
         @include media('<phone') {
@@ -645,7 +645,7 @@
         place-items: center;
         opacity: 0;
         transition: $anim_07;
-        cursor: pointer;
+        cursor: $cursor-hover;
 
         &:hover {
             svg {
@@ -1029,7 +1029,7 @@
         transform: scale(1.2);
         transition: $anim_05;
         overflow: hidden;
-        cursor: pointer;
+        cursor: $cursor-hover;
         opacity: 0;
 
         @include media('<laptop') {
@@ -1162,7 +1162,7 @@
         span {
             position: absolute;
             left: 10%;
-            top: 50%;
+            top: 60%;
             transform: translateY(-50%);
             width: 700px;
             height: 700px;
@@ -1285,6 +1285,8 @@
     }
 
     .text-box {
+        position: relative;
+        z-index: 1;
         max-width: 567px;
 
         @include media('<laptop') {
@@ -1383,10 +1385,34 @@
     }
 
     .img-box {
+        position: relative;
         display: flex;
         justify-content: center;
         width: 50%;
         min-width: 350px;
+
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            left: 50%;
+            transform: translate(-50%);
+            width: 104vw;
+            height: 250px;
+            background: rgb(4, 4, 31);
+            background: linear-gradient(
+                0deg,
+                rgba(4, 4, 31, 1) 20%,
+                rgba(4, 4, 31, 0) 100%
+            );
+            display: none;
+            opacity: 0;
+            transition: $anim_03 1.5s;
+
+            @include media('<tablet') {
+                display: block;
+            }
+        }
 
         img {
             height: 700px;
@@ -1395,11 +1421,11 @@
             transition: $anim_1 0.7s;
 
             @include media('<laptop') {
-                height: 600px;
+                height: 500px;
             }
 
             @include media('<desktop') {
-                height: 500px;
+                height: 400px;
             }
 
             @include media('<phone') {
@@ -1408,6 +1434,10 @@
         }
 
         &.show {
+            &::after {
+                opacity: 1;
+            }
+
             img {
                 opacity: 1;
                 transform: translate(0);
@@ -1420,6 +1450,10 @@
 
         @include media('<desktop_s') {
             flex-direction: column;
+        }
+
+        @include media('<tablet') {
+            overflow: visible;
         }
     }
 
